@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>박제가 된 천재, 이상</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <style type="text/css">
+        @font-face {
+        font-family: 'MapoFlowerIsland';
+        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/MapoFlowerIslandA.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+        }
+        @font-face {
+        font-family: '행복고흥L';
+        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.0/행복고흥L.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+        }
+        body {
+            margin: 0;
+            overflow: hidden;
+            cursor: url('pencil.png'), pointer;
+            background-image: url('yisang.png'); background-size: cover;
+        }
+        .container {
+            height: 100vh;
+            padding: 3%;
+        }
+        h1 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: '행복고흥L';
+            font-size: 7vw;
+            color: #fff;
+            text-align: center;
+            transition: opacity 0.5s, transform 0.5s;
+        }
+        p {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'MapoFlowerIsland';
+            font-size: 1.5rem;
+            line-height: 1.5;
+            color: #fff;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.5s, transform 0.5s;
+        }
+        .text-content {
+            border: 1px solid #F4A26E;
+            padding: 50px;
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 15px;
+        }
+        #clickImage {
+            cursor: pointer;
+            position: absolute;
+            top: 85%;
+            left: 75%;
+            transform: translate(-50%, -50%);
+            width: 6.5%;
+            height: auto;
+            opacity: 0;
+            display: block;
+            transition: opacity 1s, transform 1s;
+        }
+        .fade-in {
+            opacity: 1;
+            transform: translate(-50%, -50%) translateY(-20px);
+        }
+        .fade-out {
+            opacity: 0;
+            transform: translate(-50%, -50%) translateY(20px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>박제가 되어버린 천재를<br>
+            아시오?</h1>
+        <div class="text-box">
+        <p class="text-content">박제가 된 천재, 이상<br><br>
+            이상은 무의식 메커니즘을 시세계에 도입하여<br> 시상의 영토를 확장했다는 평가를 받는 동시에<br>
+            비상식적인 시세계로 난해한 시의 대표주자가 되었다.</p>
+        <p class="text-content">"왜 미쳤다고들 그러는지 대체 우리는 남보다 수 십 년씩 떨어지고도 마음놓고 지낼 작정이냐.
+            모르는 것은 내 재주도 모자랐겠지만 게을러 빠지게 놀고 만 지내던 일도 좀 뉘우쳐 봐야 아니 하느냐.
+            여남은 개쯤 써 보고서 시 만들 줄 안다고 잔뜩 믿고 굴러다니는 패들과는 물건이 다르다.
+            이천점에서 삼십점을 고르는데 땀을 흘렸다.
+            31년 32년 일에서 용대가리를 딱 꺼내어 놓고 하도들 야단에 배암 꼬랑지커녕 쥐꼬랑지도 못 달고 그냥 두니 서운하다.
+            깜박 신문이라는 답답한 조건을 잊어버린 것도 실수지만 이태준 박태원 두 형이 끔찍이도 편을 들어 준 데는 절한다."</p>
+        <p class="text-content">「오감도」라는 난해시를 발표하여<br>당시 충격을 받은 독자들의 강력한 항의로 연재를 중단한 뒤<br>작성한 작자의 말의 일부이다.</p>
+        <p class="text-content">어둡고 음울한 분위기와<br>
+            읽는 이를 혼란스럽게 하는 거의 사용하지 않은 띄어쓰기,<br>
+            그리고 일반적이지 않은 전개 방식 등<br>
+            그의 시를 어렵게 느끼게 하는 대표적인 요소들이 있다.<br><br>
+            이상이 사용했던 시어들을 랜덤 추천과<br>용도별로 분류해 제시함으로써<br>
+            이상의 시를 재해석할 수 있는 기회를 제공하고자 한다.</p>
+        </div>
+        <img src="nextarrow.png" id="clickImage">
+    </div>
+    <script type="text/javascript">
+        window.onload = function() {
+            const textContents = document.querySelectorAll('.text-content');
+            let currentIndex = 0;
+            const h1Element = document.querySelector('h1');
+            const clickImage = document.getElementById('clickImage');
+            clickImage.style.opacity = 0;
+            setTimeout(function() {
+            clickImage.style.opacity = 1;
+            clickImage.classList.add('fade-in');
+            }, 1000);
+            clickImage.addEventListener('click', function() {
+            if (currentIndex === 0) {
+                h1Element.classList.add('fade-out');
+                setTimeout(function() {
+                    textContents[currentIndex].classList.add('fade-in');
+                    currentIndex++;
+                }, 500);
+            } else if (currentIndex < textContents.length) {
+                textContents[currentIndex - 1].classList.remove('fade-in');
+                textContents[currentIndex - 1].classList.add('fade-out');
+                setTimeout(function() {
+                    if (currentIndex < textContents.length - 1) {
+                        textContents[currentIndex].classList.add('fade-in');
+                        if (currentIndex === 1) {
+                            document.body.style.backgroundImage = "url('yisang2.png')";
+                        }
+                        currentIndex++;
+                    } else if (currentIndex === textContents.length - 1) {
+                        textContents[currentIndex].classList.add('fade-in');
+                        if (currentIndex === 3) {
+                            document.body.style.backgroundImage = "url('yisang3.png')";
+                        }
+                        isLastTextDisplayed = true;
+                        currentIndex++;
+                    }
+                }, 500);
+            } else if (isLastTextDisplayed) {
+                window.location.href = 'indexmain.html';
+            }
+            });
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이상 시 재구성 해보기</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <style type="text/css">
+        @font-face {
+        font-family: 'MapoFlowerIsland';
+        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/MapoFlowerIslandA.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+        }
+        @font-face {
+        font-family: 'Pretendard-Regular';
+        src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+        font-weight: 400;
+        font-style: normal;
+        }
+        body {
+        margin: 0;
+        overflow: hidden;
+        cursor: url('pencil.png'), pointer;
+        }
+        .container {
+        display: flex;
+        height: 100vh;
+        }
+        .column {
+        overflow-y: auto;
+        border: 1px solid #F4A26E;
+        box-sizing: border-box;
+        padding: 10px;
+        cursor: text;
+        }
+        #column1 {
+        font-family: 'MapoFlowerIsland';
+        font-size: 1.9rem;
+        letter-spacing: 0.3rem;
+        flex: 3;
+        background-image: url('background.png'); background-size: cover;
+        position: relative;
+        padding: 3%;
+        writing-mode: vertical-lr;
+        text-orientation: upright;
+        }
+        .columns-wrapper {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        }
+        #column2 {
+            flex: 1;
+            background-color: #FEF9F3;
+            padding: 20px;
+        }
+        #text1 {
+            font-family: 'Pretendard-Regular';
+            position: relative;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 3rem;
+        }
+        #column3 {
+            font-family: 'Pretendard-Regular';
+            flex: 3;
+            font-size: 1.5rem;
+            white-space: nowrap;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            background-color: antiquewhite;
+        }
+        #column4 {
+            font-family: 'MapoFlowerIsland';
+            font-size: 3rem;
+            flex: 0.5;
+            overflow-y: auto;
+            box-sizing: border-box;
+            padding: 30px;
+            cursor: text;
+            background-color:rgb(231, 220, 206);
+            position: relative;
+            writing-mode: vertical-rl;
+            text-orientation: upright;
+            }
+        #defaultText {
+            font-size: 1.5rem;
+            color: grey;
+            opacity: 0.7;
+            }
+        .word-group {
+            margin-bottom: 10px;
+            border: 2px solid #ccc;
+            padding: 5px;
+            border-radius: 8px;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .word-group div {
+            margin: 5px;
+            padding: 5px;
+            border: 1px solid #F4A26E;
+            border-radius: 5px;
+            background-color: rgb(255, 255, 255, 0.7);
+            cursor: pointer;
+        }
+        .scrolling-text {
+        font-size: 2rem;
+        white-space: nowrap;
+        cursor: pointer;
+        }
+        .button-container {
+            position: absolute;
+            bottom: 10%;
+            left: 20%;
+        }
+        button {
+            font-family: 'Pretendard-Regular';
+            font-size: 1rem;
+            margin-right: 10px;
+            padding: 12px;
+            border-radius: 12px;
+        }
+        #nextButton {
+            margin-left: 550px;
+            border: 1px solid #F4A26E;
+            background-color: rgb(244, 162, 110);
+        }
+        #spaceButton {
+            border: 1px solid #F4A26E;
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+        #enterButton {
+            border: 1px solid #F4A26E;
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="column" id="column4" contenteditable="true">
+        </div>
+        <div class="column" id="column1" contenteditable="true"></div>
+        <div class="button-container">
+            <button id="spaceButton">띄어쓰기</button>
+            <button id="enterButton">엔터</button>
+            <button id="nextButton">발행하기</button>
+        </div>
+        <div class="columns-wrapper">
+        <div class="column" id="column2">
+            <div class="scrolling-text" id="text1"></div>
+        </div>
+        <div class="column" id="column3">
+            <div class="word-group">
+            <div>아해가</div>
+            <div>아해도</div>
+            <div>길은</div>
+            <div>사정은</div>
+            <div>아버지가</div>
+            <div>나의</div>
+            <div>나는</div>
+            <div>죄가</div>
+            <div>내게</div>
+            <div>위조가</div>
+            </div>
+        <div class="word-group">
+            <div>차라리</div>
+            <div>그렇게</div>
+            <div>껑충</div>
+            <div>어떻게</div>
+            <div>그중에</div>
+            <div>드디어</div>
+            <div>번쩍</div>
+            <div>지금</div>
+            <div>꼭</div>
+            </div>
+        <div class="word-group">
+            <div>무섭다고</div>
+            <div>떨고</div>
+            <div>무서운</div>
+            <div>무서워하는</div>
+            <div>질주하지</div>
+            <div>뛰어</div>
+            <div>넘어야</div>
+            <div>하는지</div>
+            <div>더럽혀</div>
+            <div>등장하지</div>
+            <div>않는</div>
+            <div>가서</div>
+            <div>하는</div>
+            <div>품고</div>
+            <div>식은</div>
+            <div>졸</div>
+            </div>
+        <div class="word-group">
+            <div>뿐이</div>
+            <div>다른</div>
+            <div>뚫린</div>
+            <div>없는</div>
+            <div>것이</div>
+            <div>아니</div>
+            <div>왜</div>
+            <div>이라도</div>
+            <div>침울한</div>
+            <div>거대한</div>
+            <div>미안한</div>
+            <div>결석한</div>
+            <div>속의</div>
+            <div>없는</div>
+            <div>이라도</div>
+            <div>하여도</div>
+            <div>고독의</div>
+            </div>
+        <div class="word-group">
+            <div>도로로</div>
+            <div>얼굴로</div>
+            <div>나와</div>
+            <div>아버지를</div>
+            <div>죄를</div>
+            <div>나를</div>
+            <div>음모를</div>
+            <div>백지를</div>
+            <div>뜻을</div>
+            <div>침상에서</div>
+            <div>곁에서</div>
+            <div>꿈에</div>
+            <div>동시에</div>
+            <div>적에</div>
+            <div>위에</div>
+            </div>
+        </div>
+        </div>
+    </div>
+        <script type="text/javascript">
+            window.onmousemove = function(e) {
+                const dot = document.createElement('div');
+                dot.className = 'dot';
+                dot.style.left = e.clientX + 'px';
+                dot.style.top = e.clientY + 'px';
+                dot.style.width = '1px';
+                dot.style.height = '3px';
+                dot.style.backgroundColor = 'dimgray';
+                dot.style.borderRadius = '50%';
+                dot.style.position = 'absolute';
+                dot.style.pointerEvents = 'none';
+                document.body.appendChild(dot);
+                setTimeout(function() {
+                dot.style.transition = 'opacity 0.5s';
+                dot.style.opacity = '0';
+                setTimeout(function() {
+                dot.remove();
+                }, 500);
+                }, 4000);
+            }
+
+            const typingColumn = document.getElementById('column1');
+            const typingColumn4 = document.getElementById('column4');
+            const scrollingText = document.getElementById('text1');
+            const column2 = document.getElementById('column2');
+            const column3 = document.getElementById('column3');
+            const spaceButton = document.getElementById('spaceButton');
+            const enterButton = document.getElementById('enterButton');
+            const wordsArray = ['아해가', '아해도', '길은', '사정은', '아버지가', '나의', '나는', '죄가', '내게', '위조가', '차라리', '그렇게', '껑충', '어떻게', '그중에', '드디어', '번쩍', '지금', '꼭', '무섭다고', '떨고', '무서운', '무서워하는', '질주하지', '뛰어', '넘어야', '하는지', '더럽혀', '등장하지', '않는', '가서', '하는', '품고', '식은', '졸', '뿐이', '다른', '뚫린', '없는', '것이', '아니', '왜', '이라도', '도로로', '얼굴로', '나와', '아버지를', '죄를', '나를', '음모를', '백지를', '뜻을', '침상에서', '곁에서', '꿈에', '동시에', '적에', '위에', '침울한', '거대한', '미안한', '결석한', '속의', '없는', '이라도', '하여도', '고독의', '잤다', '좋소', '적당하오', '나았소', '모였소', '중일까', '하였고', '들어온다', '놓았다', '전한다', '있다', '골목', '결석', '꿈', '무능', '거울', '갈망자', '어디'];
+
+            function generateRandomWord() {
+                return wordsArray[Math.floor(Math.random() * wordsArray.length)];
+            }
+            function updateText() {
+                scrollingText.textContent = generateRandomWord();
+            }
+            updateText();
+            column2.addEventListener('click', () => {
+            const word = scrollingText.textContent;
+            typingColumn.innerText += word;
+            updateText();
+            });
+            column3.addEventListener('click', (event) => {
+            if (event.target.tagName === 'DIV' && event.target.parentElement.classList.contains('word-group')) {
+                const word = event.target.textContent;
+                typingColumn.innerText += word;
+                updateText();}
+            });
+
+            column3.addEventListener('click', (event) => {
+            if (event.target.tagName === 'DIV') {
+            const word = event.target.textContent;
+            document.execCommand('insertText', false, word);
+            }
+            });
+            spaceButton.addEventListener('click', () => {
+            document.execCommand('insertText', false, ' ');
+            });
+            enterButton.addEventListener('click', () => {
+            document.execCommand('insertHTML', false, '<br><br>');
+            });
+
+            typingColumn.addEventListener('input', () => {
+            const typedText = typingColumn.textContent.trim();
+            const currentWord = scrollingText.textContent;
+            if (typedText === currentWord) {
+                updateText();
+                typingColumn.textContent = '';
+            }
+            });
+
+            window.onload = function() {
+                const typingColumn4 = document.getElementById('column4');
+                const defaultTextHTML = '<span id="defaultText">제목을 작성하세요 ...</span>';
+                let isDefaultTextPresent = true;
+
+                typingColumn4.innerHTML = defaultTextHTML;
+                typingColumn4.addEventListener('click', () => {
+                if (isDefaultTextPresent) {
+                    typingColumn4.textContent = '';
+                    isDefaultTextPresent = false;
+                    }
+                });
+                typingColumn4.addEventListener('blur', () => {
+                if (typingColumn4.textContent.trim() === '') {
+                    typingColumn4.innerHTML = defaultTextHTML;
+                    isDefaultTextPresent = true;
+                    }
+                });
+            };
+
+            document.getElementById('nextButton').addEventListener('click', () => {
+            const column1Content = document.getElementById('column1').innerText;
+            const column4Content = document.getElementById('column4').innerText;
+            localStorage.setItem('column1Content', column1Content);
+            localStorage.setItem('column4Content', column4Content);
+            window.location.href = 'index2.html';
+            });
+        </script>
+</body>
+</html>
